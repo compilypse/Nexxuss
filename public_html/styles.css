@@ -1,0 +1,132 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 5, 2014, 10:53:53 PM
+    Author     : bfink
+*/
+
+/*------------------------
+         layout
+--------------------------*/
+
+body
+{
+background-image:url("bgtri.svg");
+background-repeat:repeat;
+text-align: center; 
+}
+
+h3 
+{ 
+margin: 0;
+padding: 0;
+}
+h4 
+{ 
+margin: 0;
+padding: 0;
+}
+
+.container{
+    width: 1440px;
+    background:#338e60;
+    margin: 0 auto;
+    
+}
+
+#left{
+    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    //text-align: center;
+    width: 800px;
+    //padding: 100px;
+    margin:0px auto;
+    border:2px solid;
+    border-radius:25px;
+    font-size: 22px;
+    background-color:#CFB04C
+}
+
+#controlcenter{
+    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    //text-align: center;
+    width: 800px;
+    //padding: 100px;
+    margin:0px auto;
+    border:2px solid;
+    border-radius:25px;
+    font-size: 22px;
+    background-color:#CFB04C
+}
+
+#singletable{
+text-align: center; 
+}
+
+/*------------------------
+         navigation
+--------------------------*/
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    float: right;
+    
+}
+
+nav ul li{
+    list-style: none;
+    float: left;
+}
+
+header nav ul li a {
+    font-size:32px;
+    display: block;
+    color:#CFB04C;
+    text-decoration: none;
+    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font: SANS SERIF;
+    padding: 20px;
+    border-left: solid 1px #333333
+}
+
+header nav ul li a:hover{
+    background:#003300
+}
+
+.input {
+    border: 1px solid #006;
+    background: #ffc;
+}
+.input:hover {
+    border: 1px solid #f00;
+    background: #ff6;
+}
+.button {
+    border: 1px solid #006;
+    background: #338e60;
+}
+.button:hover {
+    border: 1px solid #f00;
+    background: #eef;
+}
+/*------------------------
+         Global Styles
+--------------------------*/
+
+.clearfix:before,
+.clearfix:after{
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* for IE6/7(trigger hasLayout)*/
+}

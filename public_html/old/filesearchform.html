@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+        <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+    <header>
+        <div  class="container clearfix">
+            <nav>
+                <ul>
+                    <li><a href="aprilpanel.php">Panel Home</a></li>
+                    <li><a href="filesearchform.html">Request Form</a></li>
+                    <li><a href="thestreak.php">File History</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<Center>
+        <div>
+            <center>
+            <form action="filesearch.php" method="post">
+            Name: <input type="text" name="filename"><br>
+            Number: <input type="text" name="filenumber"><br>
+            <input type="radio" name="filetype" value="1">Collateral<br>
+            <input type="radio" name="filetype" value="2">Consumer<br>
+            <input type="radio" name="filetype" value="3">Credit<br>
+            <input type="radio" name="filetype" value="4">Mortgage<br>
+            Lender: <select name = "lender">
+            <option value = "April">April</option>
+            <option value = "Joe">Joe</option>
+            <option value = "Mike">Mike</option>
+            <option value = "Sydney">Sydney</option>
+            <option value = "Paloma">Paloma</option>
+            </select>
+            <input type="submit">
+            </form>
+            </center>
+        </div>
+</Center>
+</body>
+</html>
