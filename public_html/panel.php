@@ -115,7 +115,7 @@ echo "<table border='1'>
 <th>ID #</th>
 <th>File Type</th>
 <th>File Number</th>
-<th>File Name</th>
+<th>Control Center</th>
 <th>Date Requested</th>
 <th>Return File</th>
 
