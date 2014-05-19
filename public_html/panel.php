@@ -98,7 +98,7 @@ else
     </header>
 <body>
 <div id = "tables" style = "width:100%">
-<div id ="left" style = "float: left; width: 30%;">
+<div id ="left" style = "float: left;">
 <?php
 $con=mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
 // Check connection
@@ -155,14 +155,10 @@ echo "</table>";
     
   
        
-<div id ="controlcenter" style = "float: left; width: 60%;">
-
+<div id ="controlcenter" style = "float: right;">
 stuff should be here
-
-
 </div>
-   
- 
+<div class="clear"></div> 
 </body>
 
 </html>
