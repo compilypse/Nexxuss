@@ -1,6 +1,5 @@
 <?php
 $q = intval($_GET['q']);
-
 $con = mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
 if (!$con) {
   die('Could not connect: ' . mysqli_error($con));
@@ -15,7 +14,7 @@ $filename = $row['file_name'];
 }
 mysqli_close($con);
 $con2 = mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
-$sql2="SELECT * FROM requestedfiles WHERE id_of_file= '$id' ORDER BY delivered_time DESC LIMIT 2";
+$sql2="SELECT * FROM requestedfiles WHERE id_of_file= '$id' AND file_found='1' ORDER BY delivered_time DESC LIMIT 2";
 $result2 = mysqli_query($con2,$sql2);
 ////returns two rows while loop over writes the first row with 2nd row giving the last person to request file
 $counter=0;
@@ -33,7 +32,7 @@ echo '</center>';
 echo '<table align = "center"><tr>';
 echo '<td> Last Person to Have File: </td>';
 if($counter>=2){echo '<td>'.$lastperson.'</td></tr>';}
-else{ echo '<td>You are the first to have file</td></tr>';}
+else{ echo '<td>'.$lastperson.' is the first to have the file</td></tr>';}
 echo '<tr><td> Date File Last Delivered: </td>';
 echo '<td>'.$founddate.'</td>';
 echo '</tr>';
@@ -92,8 +91,28 @@ echo "</table>";
 <button type="submit" class="button" onClick="submitForm('notes.php')" name = "notes" value ='<?php echo $id; ?>'>View All Notes</button>
 <br>
 <button type="submit" class="button" onClick="submitForm('noteform.php')" name = "notes" value ='<?php echo $id; ?>'>Create A Note</button>
-
+<hr>
+<center>
+</form>    
+    
+Give File To:
+</center>
+<form action="givefile.php" method="post">
+<select name = "recip">
+<option value = "April">April</option>
+<option value = "Jeremy">Jeremy</option>
+<option value = "Mike">Mike</option>
+<option value = "Sydney">Sydney</option>
+<option value = "Paloma">Paloma</option>
+</select>
+<br>
+<input class="button" type="submit">
 </form>
+
+
+
+
+
 <?php
 mysqli_close($con4);
 ?>

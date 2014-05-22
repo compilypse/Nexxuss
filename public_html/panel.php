@@ -106,7 +106,7 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-$sql="SELECT a.id, a.file_type,a.loan_number,a.file_name,b.requested_by,b.requested_date, b.file_found FROM The_Xistence a,requestedfiles b WHERE a.id=b.id_of_file AND b.requested_by = '$name' AND b.returned_date = '0000-00-00' AND (a.status='2' OR a.status='1') ORDER BY b.requested_date DESC;";
+$sql="SELECT a.id, a.file_type,a.loan_number,a.file_name,b.requested_by,b.requested_date, b.file_found,a.status, b.id AS request_id FROM The_Xistence a,requestedfiles b WHERE (b.file_found='0' OR b.file_found='1') AND a.id=b.id_of_file AND b.requested_by = '$name' AND (a.status='2' OR a.status='1') ORDER BY b.requested_date DESC;";
 //"SELECT * FROM requestedfiles WHERE requested_by = 'April' AND found='0' ORDER BY requesteddate DESC"
 $result = mysqli_query($con,$sql);
 echo "Requested Files";
@@ -130,13 +130,15 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['file_type'] . "</td>";
   echo "<td>" . $row['loan_number'] . "</td>";
   ?>
-    <td> <button type="submit" class="button" onClick="getData(this.value)" name = "fielid" value ='<?php echo $row['id']; ?>'><?php echo $row['file_name'] ?></button></td>
+    <td> <button type="submit" class="button" onClick="getData(this.value)" name = "fileid" value ='<?php echo $row['id']; ?>'><?php echo $row['file_name'] ?></button></td>
     <!--        echo "<td>" . $row['file_name'] . "</td>";                  -->
-  
   <?php
   echo "<td>" . $row['requested_date'] . "</td>";
   ?>
     <form action="filereturned.php" method="post" class="input">
+    <input type="hidden" name="requestid" value='<?php echo $row['request_id']; ?>' >
+    <input type="hidden" name="status" value='<?php echo $row['status']; ?>' >
+    <input type="hidden" name="filefound" value='<?php echo $row['file_found']; ?>' >    
     <td> <button type="submit" class="button" name = "returned" value ='<?php echo $row['id']; ?>'>Back To DC</button></td>
     </form>
   <?php

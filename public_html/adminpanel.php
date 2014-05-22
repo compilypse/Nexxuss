@@ -81,7 +81,7 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-$sql="SELECT a.file_type,a.loan_number,a.file_name,b.id,b.requested_by,b.requested_date, b.file_found, b.id_of_file,a.status FROM The_Xistence a,requestedfiles b WHERE a.id=b.id_of_file AND (a.status='1' OR a.status='3') ORDER BY requested_date DESC;";
+$sql="SELECT a.file_type,a.loan_number,a.file_name,b.id,b.requested_by,b.requested_date, b.file_found, b.id_of_file,a.status FROM The_Xistence a,requestedfiles b WHERE a.id=b.id_of_file AND (a.status='1' OR a.status='3') AND b.file_found = '0' ORDER BY requested_date DESC;";
 //"SELECT * FROM requestedfiles WHERE requested_by = 'April' AND found='0' ORDER BY requesteddate DESC"
 $result = mysqli_query($con,$sql);
 echo "Requested Files";

@@ -18,13 +18,26 @@ if (!mysqli_query($con,$sql))
   {
   die('Error: ' . mysqli_error($con));
   }
-//echo "1 record added";
-$sql2= "UPDATE The_Xistence SET status = '1' WHERE id = '$fileid'";  
-if (!mysqli_query($con,$sql2))
+  mysqli_close($con);
+/////////////IF to see if status is already 2 if it is dont change it back to 1
+  $con2=mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
+  $sql2="SELECT status FROM The_Xistence WHERE id = '$fileid'";
+  $result2 = mysqli_query($con2,$sql2);
+  while($row = mysqli_fetch_array($result2))
   {
-  die('Error: ' . mysqli_error($con));
+      $status=$row['status'];
   }
-mysqli_close($con);
+  mysqli_close($con2);
+  if($status==0){
+      $sql3= "UPDATE The_Xistence SET status = '1' WHERE id = '$fileid'"; 
+      $con3=mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
+        if (!mysqli_query($con3,$sql3))
+        {
+        die('Error: ' . mysqli_error($con3));
+        }
+        mysqli_close($con3);
+  }
+  
 //echo $sql2;
 
 header('Location: panel.php');
