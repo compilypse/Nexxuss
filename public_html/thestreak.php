@@ -8,16 +8,18 @@
             <nav>
                 <ul>
                     <li><a href="panel.php">Panel Home</a></li>
-                    <li><a href="filesearchform.html">File Search</a></li>
+                    <li><a href="filesearchform.php">File Search</a></li>
                     <li><a href="thestreak.php">File History</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    
 <body>
+    <center>
 <div id ="left">
     <center>
-<?php
+    <?php
 $con=mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
 // Check connection
 if (mysqli_connect_errno())
@@ -30,25 +32,26 @@ $result = mysqli_query($con,$sql);
 echo "Requested Files";
 echo "<table border='1'>
 <tr>
-<th>ID #</th>
 <th>File Type</th>
 <th>File Number</th>
 <th>File Name</th>
 <th>Requested By</th>
 <th>Date Requested</th>
-<th>Button</th>
 </tr>";
 while($row = mysqli_fetch_array($result))
   {
   if($row['file_found']==0){echo "<tr style=background-color:#ff0000>";}
   else{echo "<tr style=background-color:#38FC4F>";}
-  echo "<td>" . $row['id'] . "</td>";
-  echo "<td>" . $row['file_type'] . "</td>";
+  $filedigit=$row['file_type'];
+  if($filedigit==1){$fileword="Collateral";}
+    elseif ($filedigit==2) {$fileword="Consumer";}
+    elseif ($filedigit==3) {$fileword="Credit";}
+    else {$fileword="Mortgage";}
+  echo "<td>" . $fileword. "</td>";
   echo "<td>" . $row['loan_number'] . "</td>";
   echo "<td>" . $row['file_name'] . "</td>";
   echo "<td>" . $row['requested_by'] . "</td>";
   echo "<td>" . $row['requested_date'] . "</td>";
-  echo "<td>" .'<input type="submit" name = "Reviewed" value = ' . $row['id'] . ">". "</td>";
   echo "</tr>";
   }
 echo "</table>";
@@ -57,4 +60,5 @@ mysqli_close($con);
 ?>
     </center>
   </div>  
+       </center> 
 </html>

@@ -9,9 +9,9 @@ if (mysqli_connect_errno())
 $fileid=  $_POST['requested'];
 $requestedfor = $_POST['requestedfor'];  
 //echo $requestedfor;
-$sql= "INSERT INTO requestedfiles (id_of_file,file_found, requested_date, found_date, returned_date, requested_by, delivered_time)
+$sql= "INSERT INTO requestedfiles (id_of_file,file_found, requested_date, found_date, returned_date, requested_by, delivered_time, given_date)
 VALUES
-('$fileid','0', CURDATE(),'NULL','NULL','$requestedfor','NULL')";
+('$fileid','0', CURDATE(),'NULL','NULL','$requestedfor','NULL','NULL')";
 
 //echo $sql;
 if (!mysqli_query($con,$sql))

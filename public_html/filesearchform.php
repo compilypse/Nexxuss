@@ -66,7 +66,7 @@ and open the template in the editor.
             <nav>
                 <ul>
                     <li><a href="panel.php">Panel Home</a></li>
-                    <li><a href="filesearchform.html">File Search</a></li>
+                    <li><a href="filesearchform.php">File Search</a></li>
                     <li><a href="thestreak.php">File History</a></li>
                 </ul>
             </nav>

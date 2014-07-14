@@ -7,9 +7,11 @@ if (mysqli_connect_errno())
   }
 $requestid=  $_POST['delivered'];
 $fileid= $_POST['idoffile'];
+$filefound=$_POST['filefound'];
 //echo $fileid;
 $requestedfor = $_POST['requestedfor'];  
 //echo $requestedfor;
+
 $sql="SELECT * FROM The_Xistence WHERE id= '$fileid'";
 //echo $sql;
 $result = mysqli_query($con,$sql);
@@ -61,7 +63,6 @@ if (!mysqli_query($con3,$sql3))
 } 
 mysqli_close($con3);  
 }
-
 
 header('Location: adminpanel.php');
 ?>

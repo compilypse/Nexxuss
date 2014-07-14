@@ -2,9 +2,7 @@
 $fileid=  $_POST['returned'];
 $requestid=  $_POST['requestid'];
 $filefound=$_POST['filefound'];
-echo $filefound;
 $status=$_POST['status'];
-echo $status;
 $con=mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
 // Check connection
 if (mysqli_connect_errno())
@@ -27,6 +25,7 @@ if (mysqli_connect_errno())
         }
         mysqli_close($con);
   }
+  
 if($filefound==0){
     $con2=mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
     ///// file found 2 is canceled request
@@ -37,5 +36,5 @@ if($filefound==0){
     }
     mysqli_close($con2);
   }
-header('Location: panel.php');
+ header('Location: panel.php');
 ?>

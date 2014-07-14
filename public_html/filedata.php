@@ -8,30 +8,41 @@ mysqli_select_db($con,"nexxuss");
 $sql="SELECT * FROM The_Xistence WHERE id = '".$q."'";
 $result = mysqli_query($con,$sql);
 while($row = mysqli_fetch_array($result)) {
+
 $id = $row['id'];
 $loannumber = $row['loan_number'];
 $filename = $row['file_name'];
 }
 mysqli_close($con);
 $con2 = mysqli_connect("mysql.compilypse.com", "bakerbrandon", "bakerpassword","nexxuss");
-$sql2="SELECT * FROM requestedfiles WHERE id_of_file= '$id' AND file_found='1' ORDER BY delivered_time DESC LIMIT 2";
+$sql2="SELECT * FROM requestedfiles WHERE id_of_file= '$id' AND (file_found='1' OR file_found='3') ORDER BY delivered_time DESC";
 $result2 = mysqli_query($con2,$sql2);
-////returns two rows while loop over writes the first row with 2nd row giving the last person to request file
 $counter=0;
 while($row2 = mysqli_fetch_array($result2)) {
-$counter= $counter+1;
-$founddate = $row2['found_date'];
-$lastperson = $row2['requested_by'];
+    if($counter==0){$idofrequestforgiving=$row2['id'];}
+//$returneddate = $row2['returned_date'];
+if($founddate != "00-00-0000"){
+    $requestid=$row2['id'];
+    $lastperson = $row2['requested_by'];
+    $founddate = $row2['found_date'];
+    if($counter>=1){break;}
+    
 }
+$counter= $counter+1;
+}
+/////WHAT ABOUT FIRST PERSON TO REQUEST FILE??????????
 mysqli_close($con2);
+
+
+
 echo '<center>';
-echo '<h3>' . $id . '</h3>';
+//echo '<h3>' . $id . '</h3>';
 echo '<h3>' . $filename . '</h3>';
 echo '<h4>' . $loannumber . '</h4>';
 echo '</center>';
 echo '<table align = "center"><tr>';
 echo '<td> Last Person to Have File: </td>';
-if($counter>=2){echo '<td>'.$lastperson.'</td></tr>';}
+if($counter>=1){echo '<td>'.$lastperson.'</td></tr>';}
 else{ echo '<td>'.$lastperson.' is the first to have the file</td></tr>';}
 echo '<tr><td> Date File Last Delivered: </td>';
 echo '<td>'.$founddate.'</td>';
@@ -96,8 +107,12 @@ echo "</table>";
 </form>    
     
 Give File To:
+<br>
+<?php //echo $idofrequestforgiving; ?>
 </center>
 <form action="givefile.php" method="post">
+    <input type="hidden" name="fileid" value='<?php echo $id; ?>'>
+    <input type="hidden" name="giversfilerequestid" value='<?php echo $idofrequestforgiving; ?>'>
 <select name = "recip">
 <option value = "April">April</option>
 <option value = "Jeremy">Jeremy</option>

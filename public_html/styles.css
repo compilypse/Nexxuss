@@ -40,8 +40,21 @@ padding: 0;
 #left{
     font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 100;
-    //text-align: center;
-    width: 35%;
+    text-align: center;
+    width: 60%;
+    //padding: 100px;
+    //margin:0px auto;
+    border:2px solid;
+    border-radius:25px;
+    font-size: 22px;
+    background-color:#CFB04C
+}
+
+#leftish{
+    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    text-align: center;
+    width: 60%;
     //padding: 100px;
     //margin:0px auto;
     border:2px solid;
@@ -54,7 +67,7 @@ padding: 0;
     font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 100;
     //text-align: center;
-    width: 64%;
+    width: 38%;
     //padding: 100px;
     //margin:0px auto;
     border:2px solid;

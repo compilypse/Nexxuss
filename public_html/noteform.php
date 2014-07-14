@@ -68,7 +68,6 @@ else
     </body>
 <?php
 $idoffile=$_POST['notes'];
-echo $idoffile;
 ?>
 Note Here
 <br>

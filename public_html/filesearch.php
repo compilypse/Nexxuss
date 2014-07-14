@@ -98,6 +98,7 @@ if($filename !=NULL && $filenumber== NULL && $filetype==NULL){
 
 
 $result = mysqli_query($con,$sql);
+echo '<center>';
 echo "<div id =\"left\">";
 echo "<center>";
 echo "Search Results";
@@ -119,7 +120,12 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['id'] . "</td>";
   echo "<td>" . $row['file_name'] . "</td>";
   echo "<td>" . $row['loan_number'] . "</td>";
-  echo "<td>" . $row['file_type'] . "</td>";
+  $filedigit=$row['file_type'];
+  if($filedigit==1){$fileword="Collateral";}
+    elseif ($filedigit==2) {$fileword="Consumer";}
+    elseif ($filedigit==3) {$fileword="Credit";}
+    else {$fileword="Mortgage";}
+  echo "<td>" . $fileword . "</td>";
   echo "<td>".'<button type="submit" class="button" style="text-align:left" onClick="submitForm(\'uploadform.php\')" name = "upload"  value = ' . $row['id'] . '>Upload File</button>'."</td>";
   echo "<td>" .'<button type="submit" class="button" style="text-align:right" onClick="submitForm(\'downloadfileaction.php\')" name = "download"  value = ' . $row['id'] . '>View Docs</button>'. "</td>";
   echo "<td>" .'<button type="submit" class="button" style="text-align:center" onClick="submitForm(\'filerequested.php\')" name = "requested"  value = ' . $row['id'] . '>Request File</button>'. "</td>";
@@ -127,8 +133,11 @@ while($row = mysqli_fetch_array($result))
   }
 echo "</table>";
 echo"</form>";
+echo '</center>';
 
 echo"</div>";
+echo '</center>';
+
 echo"</body>";
 mysqli_close($con); 
 ?>  
